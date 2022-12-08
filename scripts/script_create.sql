@@ -153,10 +153,10 @@ CREATE TABLE active(
 );
 
 CREATE TABLE note(
-   id_personne INT,
+   id_prestataire INT,
    id_visiteur INT,
    valeur_note INT not null,
-   PRIMARY KEY(id_personne, id_visiteur),
-   FOREIGN KEY(id_personne) REFERENCES personnes(id_personne),
+   PRIMARY KEY(id_prestataire, id_visiteur),
+   FOREIGN KEY(id_prestataire) REFERENCES personnes(id_personne),
    FOREIGN KEY(id_visiteur) REFERENCES personnes(id_personne)
 );
