@@ -30,13 +30,13 @@ async function getPlanning(req, res) {
         const today = new Date(`${todayMonthName} ${todayDay}, ${todayYear}`)
         const todayDate = { 
             todayDay, 
-            //todayDay: '24',
-            todayMonth, 
-            //todayMonth: '11',
+            todayDay: '12',
+            //todayMonth:parseInt(todayMonth)+1, 
+            todayMonth: '01',
             todayMonthName, 
             todayYear 
         }
-
+        console.log(todayDate)
         const yesterday = new Date(today.getTime() - (24 * 60 * 60 * 1000))
         const yesterdayDate = {
             yesterdayDay: yesterday.getDate(),
@@ -54,6 +54,7 @@ async function getPlanning(req, res) {
         const timeSlots = await pool.query(rootQueries.planning, 
             [todayDate.todayDay, todayDate.todayMonth])
         const timeSlotsSorted = simplifyRequest(timeSlots.rows, 'id_stand', 'hour', 'id_personne', 'id_societe', 'nom', 'prenom', 'nom_activite', 'nom_societe', 'photo_marque')
+        console.log(timeSlotsSorted)
         res.status(200).send({ timeSlots: timeSlotsSorted, todayDate, yesterdayDate, tomorrowDate })
     } catch(e) {
         console.log(e)
