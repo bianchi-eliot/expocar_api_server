@@ -18,4 +18,52 @@ async function signUpAsClient(req, res) {
         }
     })
 }
-module.exports = { signUpAsClient }
+
+function listeAvisDuLivreDor(req,res){
+    const id = req.params.id
+
+    pool.query(visitorQueries.listeAvisDuLivreDorDunPrestataire, [id], (error,results)=>{
+        if (error) throw error
+        if(results.rows==0){
+            res.send("Le prestaire n'a pas encore de commentaires dans son livre d'or")
+        }else{
+            res.send(results.rows)
+        }
+        
+    })
+}const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
+'August', 'September', 'October', 'November', 'December']
+function ajouterUnCommentaireAuLivreDor(req,res){
+    const id_prestataire = req.params.id_prestataire
+    const id_visiteur = req.body.id_visiteur
+    let todayDay = new Date().getDate()
+    let todayMonth = new Date().getMonth()
+    let todayMonthName = monthNames[todayMonth]
+    let todayYear = new Date().getFullYear()
+    const date = new Date(`${todayMonthName} ${todayDay}, ${todayYear}`)
+    const message = req.body.message
+
+    pool.query(visitorQueries.ajouterUnCommentaireAuLivreDor,[id_prestataire,id_visiteur,date, message], (error, results)=>{
+        if(error) throw error
+        res.send("vous avez bien ajouté le commentaire")
+    })
+}
+function ajouterUnAvis(req,res){
+    const id_prestataire = req.params.id_prestataire
+    const id_visiteur = req.body.id_visiteur
+    const note = req.body.note
+    console.log(note)
+    pool.query(visitorQueries.ajouterUnAvis, [id_prestataire,id_visiteur,note], (error, results)=>{
+        if(error) throw error
+        res.send("vous avez ajouté un avis")
+    })
+}
+function moyenneAvisDunPrestataire(req,res){
+    const id_prestataire = req.params.id_prestataire
+    pool.query(visitorQueries.moyenneAvisDunPrestataire, [id_prestataire], (error, results)=>{
+        if (error) throw error
+        res.send(results.rows)
+    })
+    
+}
+module.exports = { signUpAsClient,listeAvisDuLivreDor, ajouterUnCommentaireAuLivreDor, ajouterUnAvis, moyenneAvisDunPrestataire  }

@@ -52,6 +52,7 @@ async function schedule(req, res) {
         const dates = [dateStart, dateEnd]
         let timeSlots = await pool.query(mapQueries.schedule, dates)
         timeSlots = simplifyRequest(timeSlots.rows, 'id_personne', 'libelle_service')
+        console.log(timeSlots)
         res.status(200).send(timeSlots)
         //res.status(200).render('map/map.pug', { navbarData, mapData, timeSlots: timeSlotsSorted })
     }

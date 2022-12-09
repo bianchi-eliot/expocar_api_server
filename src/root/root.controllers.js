@@ -30,14 +30,14 @@ async function getPlanning(req, res) {
         
         const today = new Date(`${todayMonthName} ${todayDay}, ${todayYear}`)
         const todayDate = { 
-            //todayDay, 
-            todayDay: '12',
-            //todayMonth: parseInt(todayMonth) + 1, 
-            todayMonth: '01',
+            todayDay, 
+            //todayDay: '14',
+            todayMonth:parseInt(todayMonth)+1, 
+            // todayMonth: '01',
             todayMonthName, 
             todayYear 
         }
-
+        console.log(todayDate)
         const yesterday = new Date(today.getTime() - (24 * 60 * 60 * 1000))
         const yesterdayDate = {
             yesterdayDay: yesterday.getDate(),
