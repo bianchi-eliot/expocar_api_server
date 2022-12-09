@@ -64,6 +64,27 @@ async function getPlanning(req, res) {
     }
 }
 
+
+async function getAllSocietes(req, res) {
+    try {
+        const societes = await pool.query(rootQueries.selectAllSocietes)
+        res.send({ data: 0, societes: societes.rows })
+    } catch(err) {
+        console.log(err.message)
+        res.send({ data: 1 })
+    }
+}
+
+async function getAllActivities(req, res) {
+    try {
+        const activities = await pool.query(rootQueries.selectAllActivities)
+        res.send({ data: 0, activities: activities.rows })
+    } catch(err) {
+        console.log(err.message)
+        res.send({ data: 1 })
+    }
+}
+
 function sortTimeSlot(a, b) {
     if (a.numero_stand < b.numero_stand) return -1
     if (a.numero_stand < b.numero_stand) return 1
@@ -72,6 +93,6 @@ function sortTimeSlot(a, b) {
 
 
 module.exports = {
-    getHome, getLogInSignUp, getPlanning
+    getHome, getLogInSignUp, getPlanning, getAllSocietes, getAllActivities
 }
 

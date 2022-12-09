@@ -13,7 +13,7 @@ const planning = `
     WHERE EXTRACT (DAY FROM creneau) = $1 AND EXTRACT(MONTH FROM creneau) = $2;`
 
 const selectAllSocietes = `SELECT id_societe, nom_societe FROM societes;`
-const selectAllActivities = `SELECT id_societe, nom_activite FROM activites;`
+const selectAllActivities = `SELECT id_activite, nom_activite FROM activites;`
 
 module.exports = {
     selectAllSocietes,

@@ -47,8 +47,8 @@ async function schedule(req, res) {
         const date = new Date()
         //const dateStart = getDateStart(date)
         //const dateEnd = getDateEnd(date)
-        const dateStart = '2022-11-24 14:00:00'
-        const dateEnd = '2022-11-24 16:00:00'
+        const dateStart = '2023-01-12 14:00:00'
+        const dateEnd = '2023-01-12 16:00:00'
         const dates = [dateStart, dateEnd]
         let timeSlots = await pool.query(mapQueries.schedule, dates)
         timeSlots = simplifyRequest(timeSlots.rows, 'id_personne', 'libelle_service')

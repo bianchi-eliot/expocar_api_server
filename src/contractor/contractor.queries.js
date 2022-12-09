@@ -20,7 +20,7 @@ const selectAllContractor = `
 
 const selectContractorById = `
     SELECT personnes.id_personne, societes.id_societe, nom, prenom, nom_activite, 
-        nom_societe, photo_marque, infoPersonne
+        nom_societe, photo_marque, infoPersonne, activites.id_activite
     FROM personnes
     INNER JOIN societes
         ON personnes.id_societe = societes.id_societe

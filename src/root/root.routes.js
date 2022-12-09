@@ -8,4 +8,7 @@ router.get('/login-signup', rootControllers.getLogInSignUp)
   
 router.get('/planning', rootControllers.getPlanning)
 
+router.get('/all-societes', rootControllers.getAllSocietes)
+router.get('/all-activities', rootControllers.getAllActivities)
+
 module.exports = router
