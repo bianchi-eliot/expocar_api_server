@@ -52,6 +52,7 @@ INSERT INTO services VALUES
     (default,'e-shop'),
     (default,'graphique d''affluence'),
     (default,'avis des clients');
+    (default,'avis des clients');
 
 
 INSERT INTO personnes VALUES
@@ -66,9 +67,17 @@ INSERT INTO personnes VALUES
     (default,'Vaillon','Thomas','dupontd@gmail.com','infoPersonne','123456',2,2,8),
     (default,'Korbi','Marie','marie@gmail.com','infoPersonne','123456',2,2,9),
     (default,'Liuzzo','Pierre','pierre@gmail.com', 'infoPersonne','123456',2,2,10),
+    (default,'Mbizi ','Charlene','charlene@gmail.com',null,'123456',null,1,null),
+    (default,'Korbi','Argjentin','argjentin@gmail.com','Bonjour','123456',1,2,1),
+    (default,'Reyna','Samuel','samuel@gmail.com','infoPersonne','123456',2,2,2),
+    (default,'Shotwell','Marcos','marcos@gmail.com', 'infoPersonne','123456',3,2,3),
+    (default,'Bedell','Heather','heather@gmail.com', 'infoPersonne','123456',1,2,4),
+    (default,'Chestnut','Sandra','sandra@gmail.com', 'infoPersonne','123456',4,2,5),
+    (default,'Ford','Angela','angela@gmail.com', 'infoPersonne','123456',4,2,6),
     (default,'nomclient1','prenomclient1','client1@gmail.com',null,'123456',null,4,null),
     (default,'nomclient2','prenomclient2','client2@gmail.com',null,'123456',null,4,null),
     (default,'nomclient3','prenomclient3','client3@gmail.com',null,'123456',null,4,null),
+    (default,'nomclient4','prenomclient4','client4@gmail.com',null,'123456',null,4,null);
     (default,'nomclient4','prenomclient4','client4@gmail.com',null,'123456',null,4,null);
     
 INSERT INTO pieces VALUES

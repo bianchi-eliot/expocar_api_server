@@ -12,9 +12,11 @@ const planning = `
         ON creneaux.id_stand = stands.id_stand
     WHERE EXTRACT (DAY FROM creneau) = $1 AND EXTRACT(MONTH FROM creneau) = $2;`
 
-const selectAllSocietes = `SELECT * FROM societes;`
+const selectAllSocietes = `SELECT id_societe, nom_societe FROM societes;`
+const selectAllActivities = `SELECT id_societe, nom_activite FROM activites;`
 
 module.exports = {
     selectAllSocietes,
+    selectAllActivities,
     planning
 }

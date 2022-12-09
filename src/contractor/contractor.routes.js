@@ -3,9 +3,9 @@ require('dotenv').config()
 const express = require('express')
 const router = express.Router()
 
-router.post('/sign-in', contractorControllers.checkIfUserExists)
+router.post('/log-in', contractorControllers.logIn)
 
-router.post('/sign-up', contractorControllers.signUp)
+router.post('/sign-in', contractorControllers.signIn)
 
 router.get('/book-time-slot', (req, res) => { 
     const month = process.env.MONTH || 'Avril'
@@ -32,15 +32,15 @@ router.get('/book-time-slot', (req, res) => {
 })
 
 
-router.get('/allContractors', contractorControllers.allContractors)
+router.get('/', contractorControllers.getAllContractor)
 
-router.get('/contractorInfo/:id', contractorControllers.infoContractor)
+router.get('/:id', contractorControllers.getContractor)
 
 router.post('/book-time-slot', contractorControllers.book)
 
 
-router.post('/enableService/:id', contractorControllers.enableService)
+router.post('/active/:id', contractorControllers.enableService)
 
-router.delete('/disableService/:id', contractorControllers.disableService)
+router.delete('/active/:id', contractorControllers.disableService)
 
 module.exports = router
