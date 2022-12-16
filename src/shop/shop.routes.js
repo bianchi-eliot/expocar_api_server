@@ -4,12 +4,8 @@ const router = express.Router();
 
 router.get("/", shopControllers.list);
 
-router.get("/add", shopControllers.add);
-router.post("/validAdd", shopControllers.validAdd);
-
-router.get('/update/piece:id', shopControllers.update);
-router.post('/validUpdate', shopControllers.validUpdate)
-
+router.post("/validAdd", shopControllers.add);
+router.post('/validUpdate', shopControllers.update)
 router.delete('/delete', shopControllers.delete)
 
 router.get("/piece:id", shopControllers.showOne);
