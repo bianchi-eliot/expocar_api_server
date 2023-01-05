@@ -79,13 +79,13 @@ INSERT INTO personnes VALUES
 
     
 INSERT INTO pieces VALUES
-    (default,'Caractéristiques techniques : Hauteur de l’emballage : 3 cm Largeur de l’emballage : 16 cm Largeur : 20 mm Longueur de l’emballage : 25.5 cm Nombre de dents : 131 Périphériques entraînés : Arbre à came','Courroie de distribution - Continental ct1230','cont_ct1230.png',50.23,18,1,2),
-    (default,'Caractéristiques techniques : Filetage extérieur : M8 x 1 mm Longueur : 118 mm Voltage : 11 V','Bougie de préchauffage - NPS M571A13','nps_m571a13.png',8.1,18,1,3),
-    (default,'Caractéristiques techniques : Couple de serrage de : 6 Nm Couple de serrage jusqu''à : 10 Nm Filetage : M 8 x 1,0 Longueur : 114 mm Montée conique : 123 Ouverture de la clé : 8 Profondeur de position : 28 mm Type de raccord : PINVersion de bougie de préchauffage : Bougie de préchauffage monopolaire Version de bougie de préchauffage : capable à l''incandescence résiduelle Voltage : 5 V','Bougie de préchauffage - BOSCH 0250404001','bosch_0250404001.png',13.52,44,1,2),
-    (default,'Caractéristiques techniques : Référence(s) commerciale(s) : 6 PK 974, 6 PK 975, 6 PK 977, 6 PK 978 Longueur : 976 mm Nombre de stries : 6','Courroie trapézoïdale à nervures (d''accessoires) - CONTITECH 6PK976','cont_6pk976.png',10.38,88,1,2),
-    (default,'Caractéristiques techniques : Diamètre extérieur : 60 mm Diamètre : 60 mm Largeur : 30 mm','Galet enrouleur de courroie de distribution - NPS S113I11B','nps_s113i11b.png',17.11,52,1,1),
-    (default,'Fourni avec :  - Ressorts de soupapes - Soupapes/valves - Kit de vis','Culasse de cylindre - AMC 908833K','amc_908833k.png',1372.85,7,1,5),
-    (default,'Type : Cartouche papier Diamètre intérieur : 26 mm Largeur : 62 mm Hauteur : 83 mm Spécification : Inclus 2 joints','Filtre à huile - NPS M131A27','npm_m131A27.png',6.90,17,1,1);
+    (default,'Caractéristiques techniques : Hauteur de l’emballage : 3 cm Largeur de l’emballage : 16 cm Largeur : 20 mm Longueur de l’emballage : 25.5 cm Nombre de dents : 131 Périphériques entraînés : Arbre à came','Courroie de distribution - Continental ct1230',50.23,'cont_ct1230.png',18,1,2),
+    (default,'Caractéristiques techniques : Filetage extérieur : M8 x 1 mm Longueur : 118 mm Voltage : 11 V','Bougie de préchauffage - NPS M571A13',8.10,'nps_m571a13.png',18,1,3),
+    (default,'Caractéristiques techniques : Couple de serrage de : 6 Nm Couple de serrage jusqu''à : 10 Nm Filetage : M 8 x 1,0 Longueur : 114 mm Montée conique : 123 Ouverture de la clé : 8 Profondeur de position : 28 mm Type de raccord : PINVersion de bougie de préchauffage : Bougie de préchauffage monopolaire Version de bougie de préchauffage : capable à l''incandescence résiduelle Voltage : 5 V','Bougie de préchauffage - BOSCH 0250404001',13.52,'bosch_0250404001.png',44,1,2),
+    (default,'Caractéristiques techniques : Référence(s) commerciale(s) : 6 PK 974, 6 PK 975, 6 PK 977, 6 PK 978 Longueur : 976 mm Nombre de stries : 6','Courroie trapézoïdale à nervures (d''accessoires) - CONTITECH 6PK976',10.38,'cont_6pk976.png',88,1,2),
+    (default,'Caractéristiques techniques : Diamètre extérieur : 60 mm Diamètre : 60 mm Largeur : 30 mm','Galet enrouleur de courroie de distribution - NPS S113I11B',17.11,'nps_s113i11b.png',52,1,1),
+    (default,'Fourni avec :  - Ressorts de soupapes - Soupapes/valves - Kit de vis','Culasse de cylindre - AMC 908833K',1372.85,'amc_908833k.png',7,1,5),
+    (default,'Type : Cartouche papier Diamètre intérieur : 26 mm Largeur : 62 mm Hauteur : 83 mm Spécification : Inclus 2 joints','Filtre à huile - NPS M131A27',6.90,'npm_m131A27.png',17,1,1);
 
 INSERT INTO commentaires VALUES
     (default,'Article nul',1),

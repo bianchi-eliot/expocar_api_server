@@ -10,6 +10,7 @@ async function addGuestBook(req, res) {
         const signatureDate = `${jour}/${mois}/${annee}`
 
         const { idContractor, idVisitor, message } = req.body
+        console.log(req.body)
         const tab = [idContractor, idVisitor, signatureDate, message]
         await pool.query(serviceQueries.insertGuestBook, tab)
         res.send({ data: 0 })

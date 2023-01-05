@@ -4,6 +4,9 @@ const router = express.Router();
 
 router.get("/", shopControllers.list);
 
+router.get('/societes', shopControllers.allSocietes)
+router.get('/types_pieces', shopControllers.allTypesPieces)
+
 router.post("/validAdd", shopControllers.add);
 router.post('/validUpdate', shopControllers.update)
 router.delete('/delete', shopControllers.delete)

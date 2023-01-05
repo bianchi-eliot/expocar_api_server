@@ -1,15 +1,30 @@
 require("dotenv").config();
 const shopQueries = require("./shop.queries")
 const pool = require('../../db')
-const pmax = "SELECT MAX(prix_piece) FROM pieces"
 
 exports.list = (req,res) => {
     pool.query(shopQueries.getAllPieces, (error, results) => {
         if (error) throw error
-        const marques = "SELECT * FROM societes"
-        const types_pieces = "SELECT * FROM type_pieces"
-        return res.status(200).send({success: 1, data: {resp: results.rows, types_pieces, marques, pmax}})
+        let pmax = 0;
+        results.rows.forEach((p) => {
+            if(parseFloat(p.prix_piece) > pmax) pmax = parseFloat(p.prix_piece)
+        })
+        return res.status(200).send({success: 1, data: {pieces: results.rows, pmax}})
     });
+}
+
+exports.allSocietes = (req,res) => {
+    pool.query(shopQueries.getAllSocietes, (error, results) => {
+        if (error) throw error
+        return res.status(200).send({success: 1, data: results.rows})
+    })
+}
+
+exports.allTypesPieces = (req, res) => {
+    pool.query(shopQueries.getAllTypes, (error, results) => {
+        if (error) throw error
+        return res.status(200).send({success: 1, data: results.rows})
+    })
 }
 
 exports.add = (req, res) => {
