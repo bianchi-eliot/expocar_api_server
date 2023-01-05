@@ -2,12 +2,14 @@ const express = require('express')
 const router = express.Router()
 const servicesControllers = require('./services.controllers.js')
 
-router.get('/livre-or', (req, res) => {
-    res.render('services/livre-or.pug', { navbarData})
-})
+router.post('/guest-book', servicesControllers.addGuestBook)
 
-router.post('/livre-or', servicesControllers.addLivreOr)
+router.get('/guest-book/:id', servicesControllers.getGuestBook)
 
-router.post('/note', servicesControllers.avis)
+router.post('/stars', servicesControllers.addStars)
+
+router.get('/stars/:id', servicesControllers.getStars)
+
+router.get('/', servicesControllers.getAllServices)
 
 module.exports = router

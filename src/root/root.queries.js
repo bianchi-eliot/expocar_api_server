@@ -14,9 +14,17 @@ const planning = `
 
 const selectAllSocietes = `SELECT id_societe, nom_societe FROM societes;`
 const selectAllActivities = `SELECT id_activite, nom_activite FROM activites;`
+const selectAllRoles = `SELECT id_role, libelle_role FROM roles;`
+
+const selectFormSignInRoles = `
+    SELECT id_role, libelle_role 
+    FROM roles
+    WHERE libelle_role <> 'organisateur' AND libelle_role <> 'prestataire_en_attente';`
 
 module.exports = {
     selectAllSocietes,
     selectAllActivities,
+    selectAllRoles,
+    selectFormSignInRoles,
     planning
 }

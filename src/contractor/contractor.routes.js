@@ -36,8 +36,12 @@ router.get('/', contractorControllers.getAllContractor)
 
 router.get('/:id', contractorControllers.getContractor)
 
+router.put('/:id', contractorControllers.updateContractor)
+
+
 router.post('/book-time-slot', contractorControllers.book)
 
+router.get('/activated-services/:id', contractorControllers.getAllActivatedServices)
 
 router.post('/active/:id', contractorControllers.enableService)
 

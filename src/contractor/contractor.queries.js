@@ -5,7 +5,7 @@ const categories = "select * from categories;"
 const activites = "select * from activites ;"
 
 const verifyEmail = "select id_personne from personnes where email = $1;"
-const insertContractor = "insert into personnes (nom,prenom,email,infoPersonne,mot_de_passe,id_activite,id_role,id_societe) values ($1,$2,$3,$4,$5,$6,$7,$8);"
+const insertPerson = "insert into personnes (nom,prenom,email,infoPersonne,mot_de_passe,id_activite,id_role,id_societe) values ($1,$2,$3,$4,$5,$6,$7,$8);"
 
 const selectAllContractor = `
     SELECT personnes.id_personne, societes.id_societe, nom, prenom, nom_activite, 
@@ -20,7 +20,7 @@ const selectAllContractor = `
 
 const selectContractorById = `
     SELECT personnes.id_personne, societes.id_societe, nom, prenom, nom_activite, 
-        nom_societe, photo_marque, infoPersonne, activites.id_activite
+        nom_societe, photo_marque, infoPersonne, activites.id_activite, email
     FROM personnes
     INNER JOIN societes
         ON personnes.id_societe = societes.id_societe
@@ -35,4 +35,19 @@ const insertTimeSlot="insert into creneaux (id_personne, id_stand, creneau) valu
 
 const findTimeSlot = "select * from creneaux where creneau=$1 and id_stand=$2"
 
-module.exports = {selectContractorByEmailAndPassword, verifyEmail, insertContractor, roles, categories, activites, selectContractorById, selectAllContractor, enableAService,disableAService,insertTimeSlot,findTimeSlot}
+const updateContractor = `
+    UPDATE personnes
+    SET nom = $1, prenom = $2, email = $3, 
+    infoPersonne = $4, id_activite = $5, id_societe = $6
+    WHERE id_personne = $7;
+`
+
+const selectContractorServices = `
+    SELECT id_service FROM active 
+    WHERE id_personne = $1;
+`
+
+module.exports = {selectContractorByEmailAndPassword, verifyEmail, roles, 
+    categories, activites, selectContractorById, selectAllContractor, 
+    enableAService,disableAService,insertTimeSlot,findTimeSlot,
+    updateContractor, selectContractorServices, insertPerson }

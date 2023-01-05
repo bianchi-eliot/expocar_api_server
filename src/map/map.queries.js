@@ -1,6 +1,6 @@
 const schedule = `
 SELECT EXTRACT (HOUR FROM creneau) AS hour, personnes.id_personne, societes.id_societe, 
-        nom, prenom, nom_activite, libelle_service, nom_societe, photo_marque, stands.id_stand
+        nom, prenom, nom_activite, nom_societe, photo_marque, stands.id_stand
     FROM creneaux
     INNER JOIN personnes
         ON creneaux.id_personne = personnes.id_personne
@@ -10,11 +10,16 @@ SELECT EXTRACT (HOUR FROM creneau) AS hour, personnes.id_personne, societes.id_s
         ON personnes.id_activite = activites.id_activite
     INNER JOIN stands
         ON creneaux.id_stand = stands.id_stand
-    INNER JOIN active
-        ON personnes.id_personne = active.id_personne
-    INNER JOIN services
-        ON active.id_service = services.id_service
-        WHERE creneaux.creneau >= $1 AND creneaux.creneau < $2;`
+
+    WHERE EXTRACT (DAY FROM creneau) = $1 AND EXTRACT(MONTH FROM creneau) = $2 
+        AND EXTRACT (HOUR FROM creneau) >= $3 AND EXTRACT (HOUR FROM creneau) < $4;`
+
+/*
+INNER JOIN active
+ON personnes.id_personne = active.id_personne
+INNER JOIN services
+ON active.id_service = services.id_service
+*/
 
 module.exports = {
     schedule

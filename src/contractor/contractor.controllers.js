@@ -2,6 +2,7 @@ const contractorServices = require('./contractor.services.js')
 
 const pool = require("../../db.js")
 const contractorQueries = require("./contractor.queries.js")
+const servicesQueries = require('../services/services.queries.js')
 
 async function logIn(req,res) {
     try {
@@ -17,13 +18,20 @@ async function logIn(req,res) {
 
 async function signIn(req, res) {
     try {
-        const { lastname, firstname, email, info, password, idActivity, idRole, idSociety } = req.body
-        const tab = [lastname, firstname, email, password, info, idActivity, idRole, idSociety]
+        const { lastName, firstName, email, info, password, idActivity, idRole, idSociety } = req.body
+
+        let tab = null
+        if (parseInt(idRole) === 2) {
+            tab = [lastName, firstName, email, info, password, idActivity, idRole, idSociety]
+        } else if (parseInt(idRole) === 4) {
+            tab = [lastName, firstName, email, info, password, null, idRole, null]
+        }
+
         const results = await pool.query(contractorQueries.verifyEmail, [email])
         if (results.rowCount === 1) res.send({ data: 2 })
         else {
-            await pool.query(contractorQueries.insertContractor, tab)
-            res.send({ data: 0 })
+            await pool.query(contractorQueries.insertPerson, tab)
+            res.send({ data: 0 })   
         }
     } catch(err) {
         console.log(err.message)
@@ -73,8 +81,8 @@ async function book(req, res) {
 
 async function enableService(req, res) {
     try {
-        const idContractor = 2
-        const idService = req.params.id || 2
+        const idContractor = 3
+        const idService = req.params.id
         await pool.query(contractorQueries.enableAService, [idContractor, idService])
         res.send({ data: 0 })
     } catch(err) {
@@ -85,7 +93,7 @@ async function enableService(req, res) {
 
 async function disableService(req, res) {
     try {
-        const idContractor = 2
+        const idContractor = 3
         const idService = req.params.id
         await pool.query(contractorQueries.disableAService, [idContractor, idService])
         res.send({ data: 0 })
@@ -95,4 +103,43 @@ async function disableService(req, res) {
     }
 }
 
-module.exports = { logIn, signIn, getContractor, getAllContractor, book, enableService, disableService }
+async function updateContractor(req, res) {
+    try {
+        const personneId = req.params.id
+        const { lastname, firstname, email, info, societes, activities } = req.body
+        const tab = [lastname, firstname, email, info, activities, societes, personneId]
+        await pool.query(contractorQueries.updateContractor, tab)
+        res.send({ data: 0 })
+    } catch(err) {
+        console.log(err)
+        res.send({ data: 1 })
+    }
+}
+
+async function getAllActivatedServices(req, res) {
+    try {
+        const contractorId = req.params.id
+        let servicesActivated = await pool.query(contractorQueries.selectContractorServices, 
+            [contractorId])
+        servicesActivated = servicesActivated.rows.map(service => service.id_service)
+        
+        let guestBook = null
+        if (servicesActivated.includes(1)) {
+            guestBook = await pool.query(servicesQueries.selectGuestBookByContractorId, [contractorId])
+        }
+
+        let stars = null
+        if (servicesActivated.includes(2)) {
+            stars = await pool.query(servicesQueries.selectStartsByContractorId, [contractorId])
+        }
+
+
+        res.send({ data: 0, servicesActivated, guestBook, stars })
+    } catch(err) {
+        console.log(err.message)
+        res.send({ data: 1 })
+    }
+    }
+
+module.exports = { logIn, signIn, getContractor, getAllContractor, book, enableService, 
+    disableService, updateContractor, getAllActivatedServices }

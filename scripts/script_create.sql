@@ -1,4 +1,4 @@
-drop table if exists note,active,creneaux,contient,rempli_panier,livre_dor,affluence_sur_page,notes,commandes,commentaires,pieces,personnes,services,roles,stands,societes,type_pieces,activites;
+drop table if exists stars,active,creneaux,contient,rempli_panier,livre_dor,affluence_sur_page,notes,commandes,commentaires,pieces,personnes,services,roles,stands,societes,type_pieces,activites;
 
 CREATE TABLE activites(
    id_activite SERIAL,
@@ -107,12 +107,12 @@ CREATE TABLE affluence_sur_page(
 );
 
 CREATE TABLE livre_dor(
-   id_personne INT,
+   id_prestataire INT,
    id_visiteur INT,
    date_signature DATE,
-   message_visiteur VARCHAR(50),
-   PRIMARY KEY(id_personne, id_visiteur),
-   FOREIGN KEY(id_personne) REFERENCES personnes(id_personne),
+   message_visiteur VARCHAR(255),
+   PRIMARY KEY(id_prestataire, id_visiteur),
+   FOREIGN KEY(id_prestataire) REFERENCES personnes(id_personne),
    FOREIGN KEY(id_visiteur) REFERENCES personnes(id_personne)
 );
 
@@ -152,7 +152,7 @@ CREATE TABLE active(
    FOREIGN KEY(id_service) REFERENCES services(id_service)
 );
 
-CREATE TABLE note(
+CREATE TABLE stars(
    id_prestataire INT,
    id_visiteur INT,
    valeur_note INT not null,

@@ -48,11 +48,10 @@ INSERT INTO roles VALUES
     (default, 'prestataire_en_attente'); --5
 
 INSERT INTO services VALUES
-    (default,'livre d''or'),
-    (default,'e-shop'),
-    (default,'graphique d''affluence'),
-    (default,'avis des clients');
-
+    (default,'Guests'' book'),
+    (default,'Stars'),
+    (default,'E-shop'),
+    (default,'Affluent graph');
 
 INSERT INTO personnes VALUES
     (default,'Mbizi ','Charlene','charlene@gmail.com',null,'123456',null,1,null),
@@ -72,10 +71,11 @@ INSERT INTO personnes VALUES
     (default,'Baudel','Laurent','heather@gmail.com', 'infoPersonne','123456',1,5,4),
     (default,'Chess','Sophie','sandra@gmail.com', 'infoPersonne','123456',4,5,5),
     (default,'Ford','Angela','angela@gmail.com', 'infoPersonne','123456',4,5,6),
-    (default,'nomclient1','prenomclient1','client1@gmail.com',null,'123456',null,4,null),
-    (default,'nomclient2','prenomclient2','client2@gmail.com',null,'123456',null,4,null),
-    (default,'nomclient3','prenomclient3','client3@gmail.com',null,'123456',null,4,null),
-    (default,'nomclient4','prenomclient4','client4@gmail.com',null,'123456',null,4,null);
+
+    (default,'Overbek','Bill','billoverbek@gmail.com',null,'123456',null,4,null),
+    (default,'Myers','Michael','michaelmyers@gmail.com',null,'123456',null,4,null),
+    (default,'Chirac','Jacques','jacqueschirac@gmail.com',null,'mangezdespommes',null,4,null),
+    (default,'Burton','Tim','timburton@gmail.com',null,'123456',null,4,null);
 
     
 INSERT INTO pieces VALUES
@@ -121,7 +121,10 @@ INSERT INTO notes VALUES
 
 -- affluence 
 insert into livre_dor VALUES
-    (3,6,'2022-11-24','bonjour');
+    (3, 18, '2023-01-09','Well done!'),
+    (3, 19, '2023-01-10','This convention was a succes!'),
+    (3, 20, '2023-01-10','Congratulation for your convention: one that will be remember in history'),
+    (3, 21, '2023-01-11','That was not bad');
 -- rempli_panier
 
 
@@ -368,7 +371,16 @@ INSERT INTO active VALUES
     (4,1),
     (4,4);
 
-INSERT INTO note VALUES
-    (2,8,4),(2,9,3),(2,10,4),(2,11,3),
-    (3,8,5),(3,9,5),(3,10,3),(3,11,2),
-    (4,8,1),(4,9,4),(4,10,3),(4,11,3);
+INSERT INTO stars VALUES
+    (2, 18, 4),
+    (3, 18, 3),
+    (4, 18, 4),
+    (2, 19, 3),
+    (3, 19, 5),
+    (4, 19, 5),
+    (2, 20, 3),
+    (3, 20, 2),
+    (4, 20, 1),
+    (2, 21, 4),
+    (3, 21, 3),
+    (4, 21, 3);

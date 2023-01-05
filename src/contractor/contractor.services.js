@@ -10,6 +10,7 @@ const signUpSchema = Joi.object({
 })
 
 
+
 function checkUserInputs(inputs) {
     return new Promise( (resolve, reject) => {
         const { error, value: user } = signUpSchema.validate(inputs, { abortEarly: false })
@@ -59,64 +60,4 @@ function checkIfTimeSlotIsValid(request) {
 
 
 
-
-const enableAService = (req, callback) => {
-    try {
-        var idService = req.params.id
-        
-        var idPerson = 1
-        var condition = 0
-        var objet = {
-            "fk_personne_id_personne": 1,
-            "fk_service_id_service": parseInt(idService)
-        }
-        activeJSON.forEach(active =>{
-            if(objet.fk_personne_id_personne == active.fk_personne_id_personne && objet.fk_service_id_service == active.fk_service_id_service){
-                console.log("Ce service est déjà activé")
-                condition++
-            }
-        })
-        console.log("condition",condition)
-
-        if(condition>0){
-            return callback(null, "Ce service est déjà activé")
-        }else{
-            
-        servicesJSON.forEach(service =>{
-            if(idService == service.id_service){
-                activeJSON.push({
-                    "fk_personne_id_personne": idPerson,
-                    "fk_service_id_service": parseInt(idService)
-                })
-            }
-        })
-        return callback(null, "Vous venez d'activer un service")
-        }
-
-    } catch (e) {
-        console.log("error")
-        return callback([])
-    }
-}
-
-const disableAService = (req, callback) => {
-    try {
-        var idService = req.params.id
-        var idPerson = 1
-
-        var index1 = activeJSON.findIndex(active =>{
-            return active.fk_service_id_service == idService && active.fk_personne_id_personne == idPerson
-        })
-        if(index1==-1){
-            return callback(null, "Vous devez activer ce service avant de le désactiver")
-        }else{
-            activeJSON.splice(index1,1) 
-            return callback(null, "Vous venez de désactiver un service")
-        }
-
-    } catch (e) {
-        console.log(e)
-        return callback([])
-    }
-}
-module.exports = { checkUserInputs, enableAService,disableAService,checkIfTimeSlotIsValid }
+module.exports = { checkUserInputs, checkIfTimeSlotIsValid }
