@@ -1,4 +1,4 @@
-drop table if exists stars,active,creneaux,contient,rempli_panier,livre_dor,affluence_sur_page,notes,commandes,commentaires,pieces,personnes,services,roles,stands,societes,type_pieces,activites;
+drop table if exists stars,active,creneaux,contient,rempli_panier,livre_dor,affluence_sur_page,notes,commandes,commentaires,pieces,personnes,services,roles,stands,societes,type_pieces,activites CASCADE;
 
 CREATE TABLE activites(
    id_activite SERIAL,
