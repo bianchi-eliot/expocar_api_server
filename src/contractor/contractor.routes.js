@@ -39,6 +39,8 @@ router.get('/:id', contractorControllers.getContractor)
 router.put('/:id', contractorControllers.updateContractor)
 
 
+
+
 router.post('/book-time-slot', contractorControllers.book)
 
 router.get('/activated-services/:id', contractorControllers.getAllActivatedServices)
@@ -46,5 +48,8 @@ router.get('/activated-services/:id', contractorControllers.getAllActivatedServi
 router.post('/active/:id', contractorControllers.enableService)
 
 router.delete('/active/:id', contractorControllers.disableService)
+
+router.get('/affluence/:id', contractorControllers.affluenceParPersonne)
+
 
 module.exports = router

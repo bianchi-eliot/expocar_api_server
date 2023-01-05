@@ -47,7 +47,10 @@ const selectContractorServices = `
     WHERE id_personne = $1;
 `
 
+const showaffluenceParPersonne = "select tranche_horaire, compteur  from affluence_sur_page where id_personne = $1;"
+
+
 module.exports = {selectContractorByEmailAndPassword, verifyEmail, roles, 
     categories, activites, selectContractorById, selectAllContractor, 
     enableAService,disableAService,insertTimeSlot,findTimeSlot,
-    updateContractor, selectContractorServices, insertPerson }
+    updateContractor, selectContractorServices, insertPerson, showaffluenceParPersonne }

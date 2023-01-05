@@ -120,6 +120,14 @@ INSERT INTO notes VALUES
 
 
 -- affluence 
+insert into affluence_sur_page VALUES
+    (1,'8',12,4),
+    (2,'10',34,4),
+    (3,'12',20,4),
+    (4,'14',2,4),
+    (5,'16',120,4),
+    (6,'18',13,4),
+    (7,'19',13,4);
 insert into livre_dor VALUES
     (3, 18, '2023-01-09','Well done!'),
     (3, 19, '2023-01-10','This convention was a succes!'),

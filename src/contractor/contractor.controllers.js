@@ -141,5 +141,16 @@ async function getAllActivatedServices(req, res) {
     }
     }
 
+async function affluenceParPersonne(req,res){
+    try {
+        const idContractor = req.params.id
+        const results = await pool.query(contractorQueries.showaffluenceParPersonne, [idContractor])
+        res.send({ data: results.rows })
+    } catch(err){
+        console.log(err.message)
+        res.send({ data: 1})
+    }
+}
+
 module.exports = { logIn, signIn, getContractor, getAllContractor, book, enableService, 
-    disableService, updateContractor, getAllActivatedServices }
+    disableService, updateContractor, getAllActivatedServices, affluenceParPersonne }

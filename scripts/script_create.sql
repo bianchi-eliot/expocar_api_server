@@ -19,8 +19,6 @@ CREATE TABLE societes(
    PRIMARY KEY(id_societe)
 );
 
-
-
 CREATE TABLE stands(
    id_stand SERIAL,
    numero_stand INT,
