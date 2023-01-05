@@ -1,4 +1,4 @@
-drop table if exists stars,active,creneaux,contient,rempli_panier,livre_dor,affluence_sur_page,notes,commandes,commentaires,pieces,personnes,services,roles,stands,societes,type_pieces,activites;
+drop table if exists stars, active, creneaux, contient, rempli_panier, livre_dor, affluence_sur_page, notes, commandes, commentaires, pieces, personnes, services, roles, stands, societes, type_pieces, activites;
 
 CREATE TABLE activites(
    id_activite SERIAL,
@@ -107,7 +107,7 @@ CREATE TABLE affluence_sur_page(
 CREATE TABLE livre_dor(
    id_prestataire INT,
    id_visiteur INT,
-   date_signature DATE,
+   date_signature VARCHAR(255),
    message_visiteur VARCHAR(255),
    PRIMARY KEY(id_prestataire, id_visiteur),
    FOREIGN KEY(id_prestataire) REFERENCES personnes(id_personne),
